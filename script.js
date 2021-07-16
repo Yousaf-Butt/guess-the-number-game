@@ -2,27 +2,29 @@ const name = prompt("Welkom, wat is je naam?");
 
 console.log(`Hey ${name}`);
 
-const minimalNumber = prompt("wat is het kleinste getal dat je wil raden?");
+const minNumber = prompt("wat is het laagste getal dat je wil raden?");
 
-const maximalNumber = prompt("Wat is het grootste getal dat je wil raden?");
+const maxNumber = prompt("Wat is het hoogste getal dat je wil raden?");
 
-const randomNumber = Math.floor(Math.random() * (maximalNumber - minimalNumber) + minimalNumber);
+const randomNumber = Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
+
+console.log(randomNumber);
 
 function game() {
   for (i = 0; i < 5; i++) {
     let guess = prompt(
-    `Voer een nummer in van ${minimalNumber} tot ${maximalNumber} om te beginnen met raden...`
+    `Voer een nummer in van ${minNumber} tot ${maxNumber} om te beginnen met raden...`
     );
-    if (guess != randomNumber) {
-      console.log("Dat is niet correct");
-    } if (i === 4) {
-      console.log("Game over");
-    } else if (guess === randomNumber) {
+    if (guess == randomNumber) {
       console.log("Gefeliciteerd, je hebt gewonnen!");
       console.log(`Dag ${name}. Tot de volgende keer`);
-      i = 4;
+      i = 5;
+    } else {
+        console.log("Dat is niet correct");
+        if (i == 4) {
+          console.log("Game over");
+        }
     }
   }
 }
-
 game();
